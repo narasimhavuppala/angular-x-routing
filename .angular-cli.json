@@ -21,6 +21,12 @@
       "styles": [
         "./scss/app.scss"
       ],
+      "stylePreprocessorOptions":{
+        "includePaths": [
+          "../node_modules/bootstrap/scss",
+          "./scss"
+        ]
+      },
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
