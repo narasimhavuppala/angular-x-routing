@@ -1,3 +1,7 @@
+# Following Course
+https://app.pluralsight.com/library/courses/angular-routing/table-of-contents  
+https://github.com/DeborahK/Angular-Routing
+
 # AngularXRouting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
