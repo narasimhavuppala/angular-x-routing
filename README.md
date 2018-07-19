@@ -2,6 +2,22 @@
 https://app.pluralsight.com/library/courses/angular-routing/table-of-contents  
 https://github.com/DeborahK/Angular-Routing
 
+## Info
+
+This app is about routing and architecture, not design
+
+### Course Agenda
+* Routing basics
+* Routing to features
+* Route parameters
+* Prefetching data using Route Resolvers
+* Child Routes
+* Grouping and Component-less Routes
+* Styling, Animating and Watching Routes
+* Secondary (Auxiliary) Routes
+* Route Guards
+* Lazy Loading
+
 # AngularXRouting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.

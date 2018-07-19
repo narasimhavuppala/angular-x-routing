@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
+import { MessageService } from './message.service';
 
 @NgModule({
-  providers: []
+  providers: [
+    MessageService
+  ]
 })
 export class CoreModule { }
