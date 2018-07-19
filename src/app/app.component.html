@@ -4,10 +4,11 @@
       <a class="navbar-brand">{{pageTitle}}</a>
       <ul class="nav navbar-nav">
         <li>
-          <a>Home</a>
+          <!-- A link parameters array, here we could have used the shortcut syntax <a routerLink="/welcome" -->
+          <a [routerLink]="['/welcome']">Home</a>
         </li>
         <li>
-          <a>Product List</a>
+          <a [routerLink]="['/products']">Product List</a>
         </li>
         <li>
           <a>Add Product</a>
@@ -30,6 +31,7 @@
     </div>
   </nav>
   <div class="container">
-    <app-home></app-home>
+    <!-- Can only display one route component at a time. But we can have multiple outlets -->
+    <router-outlet></router-outlet>
   </div>
 </div>

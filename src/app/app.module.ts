@@ -7,12 +7,14 @@ import { MessagesModule } from './messages/messages.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { Page404Component } from './page-404/page-404.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
