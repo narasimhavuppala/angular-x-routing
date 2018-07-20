@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { MessageService } from './message.service';
+import { ProductService } from './product.service';
 
 @NgModule({
   providers: [
-    MessageService
+    MessageService,
+    ProductService
   ]
 })
 export class CoreModule { }
