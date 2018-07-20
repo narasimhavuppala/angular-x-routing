@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    {{pageTitle}}
+    <h2>{{pageTitle}}</h2>
   </div>
 
   <div class="panel-body">
@@ -50,7 +50,7 @@
               </button>
             </span>
             <span>
-              <a class="btn btn-default">
+              <a class="btn btn-default" [routerLink]="['/welcome']">
                 Cancel
               </a>
             </span>

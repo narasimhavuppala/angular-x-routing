@@ -4,7 +4,7 @@
       <a class="navbar-brand">{{pageTitle}}</a>
       <ul class="nav navbar-nav">
         <li>
-          <!-- A link parameters array, here we could have used the shortcut syntax <a routerLink="/welcome" -->
+          <!-- A link parameters array, here we could have used the shorthand syntax <a routerLink="/welcome" -->
           <a [routerLink]="['/welcome']">Home</a>
         </li>
         <li>
@@ -16,16 +16,16 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a>Welcome user</a>
+          <a>Welcome <ng-container *ngIf="user">{{ user.userName }}</ng-container></a>
         </li>
         <li>
           <a>Show Messages</a>
         </li>
-        <li>
-          <a>Log In</a>
+        <li *ngIf="!user">
+          <a [routerLink]="['/login']">Log In</a>
         </li>
-        <li>
-          <a>Log Out</a>
+        <li *ngIf="user">
+          <button class="btn btn-link" (click)="logOut()">Log out</button>
         </li>
       </ul>
     </div>

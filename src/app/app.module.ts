@@ -5,6 +5,7 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MessagesModule } from './messages/messages.module';
 import { ProductModule } from './product/product.module';
+import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import { Page404Component } from './page-404/page-404.component';
     CoreModule,
     MessagesModule,
     ProductModule,
+    UserModule,
     AppRoutingModule,       // IMPORTANT, put this last, else wildcard route will catch feature module:s routes
   ],
   declarations: [

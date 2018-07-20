@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        {{pageTitle}}
+        <h2>{{ pageTitle }}</h2>
     </div>
 
     <!-- Filter the Products   -->
@@ -20,13 +20,11 @@
         <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
 
         <div class="table-responsive">
-            <table class="table"
-                   *ngIf="products && products.length">
+            <table class="table" *ngIf="products && products.length">
                 <thead>
                     <tr>
                         <th>
-                            <button class="btn btn-primary"
-                                (click)="toggleImage()">
+                            <button class="btn btn-primary" (click)="toggleImage()">
                                 {{showImage ? "Hide" : "Show"}} Image
                             </button>
                         </th>
@@ -40,14 +38,12 @@
                 <tbody>
                     <tr *ngFor="let product of products | productFilter:listFilter">
                         <td>
-                            <img *ngIf="showImage && product.imageUrl"
-                                 [src]="product.imageUrl"
-                                 [title]="product.productName | uppercase"
-                                 [style.width.px]="imageWidth" 
-                                 [style.margin.px]="imageMargin">
+                            <img *ngIf="showImage && product.imageUrl" [src]="product.imageUrl" [title]="product.productName | uppercase" [style.width.px]="imageWidth"
+                                [style.margin.px]="imageMargin">
                         </td>
-                        <td><a>
-                            {{product.productName}}
+                        <td>
+                            <a>
+                                {{product.productName}}
                             </a>
                         </td>
                         <td>{{ product.productCode | lowercase }}</td>
@@ -56,8 +52,8 @@
                         <td>
                             <app-star [rating]="product.starRating">
                             </app-star>
-                       </td>
-                       <td>
+                        </td>
+                        <td>
                             <a class="btn btn-primary">
                                 Edit
                             </a>
