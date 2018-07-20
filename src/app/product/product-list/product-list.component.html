@@ -52,10 +52,10 @@
                         </td>
                         <td>{{ product.productCode | lowercase }}</td>
                         <td>{{ product.releaseDate }}</td>
-                        <td>{{ product.price | currency:"USD":true:"1.2-2" }}</td>
+                        <td>{{ product.price | currency:"USD":"symbol":"1.2-2" }}</td>
                         <td>
-                            <ai-star [rating]="product.starRating">
-                            </ai-star>
+                            <app-star [rating]="product.starRating">
+                            </app-star>
                        </td>
                        <td>
                             <a class="btn btn-primary">

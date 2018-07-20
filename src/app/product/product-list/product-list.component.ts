@@ -4,7 +4,6 @@ import { ProductModel } from 'app/data/product.model';
 import { ProductService } from 'app/core/product.service';
 
 @Component({
-  selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
@@ -31,7 +30,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.productsSubscription = this.productService.getProducts().subscribe(p => this.products = p);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.productsSubscription.unsubscribe();
   }
 

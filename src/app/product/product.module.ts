@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductFilterPipe } from './product-filter.pipe';
@@ -10,7 +12,9 @@ import { ProductEditTagsComponent } from './product-edit-tags/product-edit-tags.
 
 @NgModule({
   imports: [
-    SharedModule
+    FormsModule,
+    SharedModule,
+    ProductRoutingModule
   ],
   declarations: [
     ProductListComponent,

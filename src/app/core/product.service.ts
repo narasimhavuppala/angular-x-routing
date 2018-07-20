@@ -28,7 +28,7 @@ export class ProductService {
         return Observable.create((observer: Observer<ProductModel>) => {
             this.products.push(product);
             observer.next(product);
-        })
+        });
     }
 
     updateProduct(product: ProductModel): Observable<ProductModel> {
@@ -40,7 +40,7 @@ export class ProductService {
     }
 
     deleteProduct(id: number): Observable<ProductModel> {
-        return Observable.create((observer: Observer<boolean>) => { 
+        return Observable.create((observer: Observer<boolean>) => {
             this.products = this.products.filter(p => p.id !== id);
             observer.next(true);
         });

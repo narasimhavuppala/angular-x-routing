@@ -7,7 +7,8 @@ import { StarComponent } from './star/star.component';
     CommonModule
   ],
   exports: [
-    CommonModule
+    CommonModule,
+    StarComponent
   ],
   declarations: [StarComponent]
 })
