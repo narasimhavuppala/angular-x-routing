@@ -19,7 +19,7 @@ import { Page404Component } from './page-404/page-404.component';
     MessagesModule,
     ProductModule,
     UserModule,
-    AppRoutingModule,       // IMPORTANT, put this last, else wildcard route will catch feature module:s routes
+    AppRoutingModule,       // IMPORTANT, put this last, else wildcard route will catch feature module:s routes -- IF however routes were configured inline in this model they would have been processed last
   ],
   declarations: [
     AppComponent,
