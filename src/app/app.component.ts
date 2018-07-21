@@ -47,8 +47,11 @@ export class AppComponent implements OnInit, OnDestroy {
   # PROVIDING DATA WITH A ROUTE
   - Route parameters like :id
   - Optional route parameters, as seen below
-  - Query parameters as seen in product-list.component and product-detail.component to retain settings for filter and showing images
+  - Query parameters 
+    - As seen in product-list.component and product-detail.component to retain settings for filter and showing images
   - Route:s data property
+    - Can not change, use for static data
+    - See product-routing.module and product-list.component for retrieving it
   - Route Resolver
   - Service that is injected in different components, holding some state
 

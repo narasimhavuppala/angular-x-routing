@@ -7,7 +7,11 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 const routes: Routes = [
   {
     path: 'products',
-    component: ProductListComponent
+    component: ProductListComponent,
+    data: {
+      // Must contain static data
+      pageTitle: 'Product List'
+    }
   },
   {
     // id could be named anything, can have several (but they need a unique name)

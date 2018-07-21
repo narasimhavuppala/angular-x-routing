@@ -11,7 +11,7 @@ import { ProductService } from 'app/core/product.service';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
 
-  pageTitle = 'Product List';
+  pageTitle = '';
   imageWidth = 50;
   imageMargin = 2;
   showImage = false;
@@ -30,6 +30,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.pageTitle = this.activatedRoute.snapshot.data['pageTitle']; // we never subscribe to data since it is always static
     this.productsSubscription = this.productService.getProducts().subscribe(p => this.products = p);
 
     this.listFilter = this.activatedRoute.snapshot.queryParamMap.get('filterBy') || '';
