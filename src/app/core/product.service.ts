@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
 
 import { ProductModel } from 'app/data/product.model';
 import { productData } from 'app/data/product-data';
@@ -16,12 +17,14 @@ export class ProductService {
         return Observable.of(this.products);
     }
 
+    // view, edit, create
+    // simulating a server delay with .delay()
     getProduct(id: number) {
         if (id === 0) {
-            return Observable.of(this.initializeProduct());
+            return Observable.of(this.initializeProduct()).delay(1000);
         }
 
-        return Observable.of(this.products.find(p => p.id === id));
+        return Observable.of(this.products.find(p => p.id === id)).delay(1000);
     }
 
     createProduct(product: ProductModel): Observable<ProductModel> {
