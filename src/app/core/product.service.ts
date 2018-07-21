@@ -16,8 +16,8 @@ export class ProductService {
         return Observable.of(this.products);
     }
 
-    getProduct(id?: number) {
-        if (id == null) {
+    getProduct(id: number) {
+        if (id === 0) {
             return Observable.of(this.initializeProduct());
         }
 
