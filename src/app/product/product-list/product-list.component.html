@@ -42,7 +42,28 @@
                                 [style.margin.px]="imageMargin">
                         </td>
                         <td>
-                            <a [routerLink]="['/products', product.id]">
+                            <!-- 
+                                Query parameters CAN be retained across routing paths. We do NOT configure anything in route config.
+                                Allthough preserve might be a router configure option in the future: https://stackoverflow.com/questions/41726938/in-angular-2-how-to-preserve-query-params-and-add-additional-query-params-to-rou
+                                But right now it is a per link/navigation configuration
+                            
+                                navigate from code 
+
+                                this.router.navigate(['/products', product.id], {
+                                    queryParams: {
+                                        filterBy: listFilter, 
+                                        showImage: showImage
+                                    },
+                                    queryParamsHandling: 'preserve' // other option is merge
+                                });
+
+                                https://angular.io/api/router/NavigationExtras
+
+                                // getting queryParam from code
+                                console.log(this.activatedRoute.snapshot.queryParamMap.get('showImage'));
+                            -->
+                            <a [routerLink]="['/products', product.id]" 
+                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here. In product detail:s back link we preserve them -->
                                 {{product.productName}} {{ product.id }}
                             </a>
                         </td>

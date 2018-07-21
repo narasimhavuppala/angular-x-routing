@@ -47,10 +47,17 @@ export class AppComponent implements OnInit, OnDestroy {
   OPTONAL ROUTES PARAMETERS
 
   They must come last
+  
+  from template
   [routerLink]="['foo', bar.id, { key: value }]"
+
+  from code
+  this.router.navigate(['foo', bar.id, { key: value }]);
 
   const id = +this.activatedRoute.snapshot.params['id'];
   const key = this.activatedRoute.snapshot.params['key'];
 
   use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
+
+  We do NOT configure optional route parameters in route configuration
 */
