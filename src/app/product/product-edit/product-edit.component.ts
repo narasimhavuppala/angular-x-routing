@@ -33,6 +33,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // We need to subscribe to params here (instead of using snapshot), so new data is fetched if user clicks create product from the top menu (a new id with value 0 is sent with the route, AND this component is NOT recreated)
+    // use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/guide/router#activated-route-in-action
     this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
   }
 

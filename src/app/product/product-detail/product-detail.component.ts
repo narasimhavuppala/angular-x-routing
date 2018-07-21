@@ -21,6 +21,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   // This is a great hook to get data for the component, prefer it over doing it in the constructor
   ngOnInit() {
+    // use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params
     const id = +this.activatedRoute.snapshot.params['id'];
     this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
   }
