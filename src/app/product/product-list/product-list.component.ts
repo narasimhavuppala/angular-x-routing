@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+
 import { ProductModel } from 'app/data/product.model';
 import { ProductService } from 'app/core/product.service';
 
@@ -19,6 +21,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   productsSubscription: Subscription;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private productService: ProductService
   ) { }
 
@@ -28,6 +31,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.productsSubscription = this.productService.getProducts().subscribe(p => this.products = p);
+
+    this.listFilter = this.activatedRoute.snapshot.queryParamMap.get('filterBy') || '';
+    this.showImage = this.activatedRoute.snapshot.queryParamMap.get('showImage') === 'true';
   }
 
   ngOnDestroy() {

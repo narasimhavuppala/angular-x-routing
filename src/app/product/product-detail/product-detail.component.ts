@@ -25,7 +25,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     const id = +this.activatedRoute.snapshot.params['id'];
     this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
 
-    // getting queryParam from code
+    // getting queryParam from code (using queryParamMap)
     console.log(this.activatedRoute.snapshot.queryParamMap.get('showImage'));
   }
 

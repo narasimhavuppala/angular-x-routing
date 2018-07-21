@@ -59,11 +59,12 @@
 
                                 https://angular.io/api/router/NavigationExtras
 
-                                // getting queryParam from code
+                                // getting queryParam from code, can also subscribe (look it up a bit before using)
                                 console.log(this.activatedRoute.snapshot.queryParamMap.get('showImage'));
+                                this.activatedRoute.queryParamMap.subscribe
                             -->
                             <a [routerLink]="['/products', product.id]" 
-                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here. In product detail:s back link we preserve them -->
+                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here. In product-detail.component:s back link we preserve them -->
                                 {{product.productName}} {{ product.id }}
                             </a>
                         </td>
