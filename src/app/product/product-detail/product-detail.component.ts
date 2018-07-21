@@ -19,7 +19,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private productService: ProductService
   ) { }
 
-
   // This is a great hook to get data for the component, prefer it over doing it in the constructor
   ngOnInit() {
     const id = +this.activatedRoute.snapshot.params['id'];

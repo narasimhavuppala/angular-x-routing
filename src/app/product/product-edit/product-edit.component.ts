@@ -23,18 +23,23 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private messageService: MessageService
-  ) { }
+  ) { 
+    this.onGetProductId = this.onGetProductId.bind(this);
+  }
 
   ngOnInit() {
-    this.routeParamSubscription = this.activatedRoute.params.subscribe((params) => {
-      const id = +params['id'];
-      this.pageTitle = id === 0 ? 'Create Product' : this.pageTitle;
-      this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
-    });
+    // We need to subscribe to params here (instead of using snapshot), so new data is fetched if user clicks create product from the top menu (a new id with value 0 is sent with the route)
+    this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
   }
 
   ngOnDestroy() {
     this.routeParamSubscription.unsubscribe();
     this.productSubscription.unsubscribe();
+  }
+
+  private onGetProductId(params) {
+    const id = +params['id'];
+    this.pageTitle = id === 0 ? 'Create Product' : this.pageTitle;
+    this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
   }
 }
