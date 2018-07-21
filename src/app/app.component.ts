@@ -39,4 +39,18 @@ export class AppComponent implements OnInit, OnDestroy {
   The function is called 4 times
 
   Lets instead try to use an event emitter
+
+*/
+
+/*
+
+  OPTONAL ROUTES PARAMETERS
+
+  They must come last
+  [routerLink]="['foo', bar.id, { key: value }]"
+
+  const id = +this.activatedRoute.snapshot.params['id'];
+  const key = this.activatedRoute.snapshot.params['key'];
+
+  use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
 */

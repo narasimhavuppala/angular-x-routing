@@ -18,6 +18,8 @@ This app is about routing and architecture, not design
 * Route Guards
 * Lazy Loading
 
+See app.component for notes, for example on optional routes parameters
+
 # AngularXRouting
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
