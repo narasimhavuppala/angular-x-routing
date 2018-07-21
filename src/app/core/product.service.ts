@@ -26,6 +26,13 @@ export class ProductService {
 
     createProduct(product: ProductModel): Observable<ProductModel> {
         return Observable.create((observer: Observer<ProductModel>) => {
+            let maxId = 0;
+            this.products.forEach((p) => {
+                maxId = Math.max(p.id, maxId)
+            });
+
+            product.id = maxId + 1;
+
             this.products.push(product);
             observer.next(product);
         });
