@@ -17,8 +17,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   pageTitle = '';
   errorMessage: string;
   product: ProductModel;
-  productSubscription: Subscription;
-  routeParamSubscription: Subscription;
+  // productSubscription: Subscription;
+  // routeParamSubscription: Subscription;
+  activatedRouteSubscription: Subscription;
   productUpdatedSubscription: Subscription;
   productDeleteSubscription: Subscription;
 
@@ -28,7 +29,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private messageService: MessageService
   ) {
-    this.onGetProductId = this.onGetProductId.bind(this);
+    // this.onGetProductId = this.onGetProductId.bind(this);
   }
 
   ngOnInit() {
@@ -36,12 +37,19 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     // this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
 
     // use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
-    this.routeParamSubscription = this.activatedRoute.paramMap.subscribe(this.onGetProductId);
+    // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe(this.onGetProductId);
+
+    // We no longer get the id and fetch the product via productService since we are using a resolver instead
+
+    // subscribing to resolve
+    this.activatedRouteSubscription = this.activatedRoute.data.subscribe(data => this.product = data['product']);
   }
 
   ngOnDestroy() {
-    this.routeParamSubscription.unsubscribe();
-    this.productSubscription.unsubscribe();
+    // this.routeParamSubscription.unsubscribe();
+    // this.productSubscription.unsubscribe();
+
+    this.activatedRouteSubscription.unsubscribe();
 
     if (this.productUpdatedSubscription) {
       this.productUpdatedSubscription.unsubscribe();
@@ -73,11 +81,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  private onGetProductId(params: ParamMap) {
-    const id = +params.get('id');
-    this.productSubscription = this.productService.getProduct(id).subscribe((product) => {
-      this.product = JSON.parse(JSON.stringify(product)); // we edit on a copy, in case user cancels
-      this.pageTitle = id === 0 ? 'Create Product' : `Edit ${product.productName}`;
-    });
-  }
+  // private onGetProductId(params: ParamMap) {
+  //   const id = +params.get('id');
+  //   this.productSubscription = this.productService.getProduct(id).subscribe((product) => {
+  //     this.product = JSON.parse(JSON.stringify(product)); // we edit on a copy, in case user cancels
+  //     this.pageTitle = id === 0 ? 'Create Product' : `Edit ${product.productName}`;
+  //   });
+  // }
 }
