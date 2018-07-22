@@ -42,7 +42,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     // We no longer get the id and fetch the product via productService since we are using a resolver instead
 
     // subscribing to resolve
-    this.activatedRouteSubscription = this.activatedRoute.data.subscribe(data => this.product = data['product']);
+    this.activatedRouteSubscription = this.activatedRoute.data.subscribe((data) => {
+      this.product = JSON.parse(JSON.stringify(data['product'])); // we edit on a copy, in case user cancels
+      this.pageTitle = this.product.id === 0 ? 'Create Product' : `Edit ${this.product.productName}`;
+    });
   }
 
   ngOnDestroy() {
