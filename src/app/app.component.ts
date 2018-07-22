@@ -46,6 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   # PROVIDING DATA WITH A ROUTE
   - Route parameters like :id
+    - See product-routing.module, product-edit.component and product-detail.component
   - Optional route parameters, as seen below
   - Query parameters 
     - As seen in product-list.component and product-detail.component to retain settings for filter and showing images
