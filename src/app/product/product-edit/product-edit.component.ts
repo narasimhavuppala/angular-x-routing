@@ -76,7 +76,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   private onGetProductId(params: ParamMap) {
     const id = +params.get('id');
     this.productSubscription = this.productService.getProduct(id).subscribe((product) => {
-      this.product = product;
+      this.product = JSON.parse(JSON.stringify(product)); // we edit on a copy, in case user cancels
       this.pageTitle = id === 0 ? 'Create Product' : `Edit ${product.productName}`;
     });
   }
