@@ -54,7 +54,8 @@ export class AppComponent implements OnInit, OnDestroy {
     - Can not change, use for static data
     - See product-routing.module and product-list.component for retrieving it
   - Route Resolver
-    - See product-routing.module, product-edit.component and product-detail.component
+    - See product-routing.module and product-detail.component
+    - Remember that the resolved data is one instance, shared between routable components that fetches the data
   - Service that is injected in different components, holding some state
 
 
