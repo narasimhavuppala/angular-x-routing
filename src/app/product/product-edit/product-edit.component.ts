@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observer } from 'rxjs/Observer';
 
@@ -33,8 +33,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // We need to subscribe to params here (instead of using snapshot), so new data is fetched if user clicks create product from the top menu (a new id with value 0 is sent with the route, AND this component is NOT recreated)
+    // this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
+    
     // use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
-    this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
+    this.routeParamSubscription = this.activatedRoute.paramMap.subscribe(this.onGetProductId);
   }
 
   ngOnDestroy() {
@@ -71,8 +73,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  private onGetProductId(params) {
-    const id = +params['id'];
+  private onGetProductId(params: ParamMap) {
+    const id = +params.get('id');
     this.pageTitle = id === 0 ? 'Create Product' : this.pageTitle;
     this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
   }

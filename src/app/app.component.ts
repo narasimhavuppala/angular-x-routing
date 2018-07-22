@@ -54,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     - Can not change, use for static data
     - See product-routing.module and product-list.component for retrieving it
   - Route Resolver
+    - See product-routing.module, product-edit.component and product-detail.component
   - Service that is injected in different components, holding some state
 
 
@@ -73,4 +74,8 @@ export class AppComponent implements OnInit, OnDestroy {
   use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
 
   We do NOT configure optional route parameters in route configuration
+
+
+  paramMap vs queryParamMap
+  https://stackoverflow.com/questions/49615857/angular-parammap-vs-queryparammap
 */
