@@ -29,6 +29,8 @@ const routes: Routes = [
     path: 'products/:id/edit',
     component: ProductEditComponent,
     resolve: {
+      // If the child routes work with the same data, we can have the resolver here in the parent. See product-edit-info.component for how to retrieve the data
+      // But if the child routes work with different data, it is better to use a resolver in their configuration
       product: ProductResolverService
     },
     // Children array, associated with the parent route

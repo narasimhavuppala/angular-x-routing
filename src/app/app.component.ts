@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
     - Can not change, use for static data
     - See product-routing.module and product-list.component for retrieving it
   - Route Resolver
-    - See product-routing.module, product-detail.component and product-edit.component
+    - See product-routing.module, product-detail.component, product-edit.component, product-edit-info.component and product-edit-tags.component
     - Remember that the resolved data is one instance, shared between routable components that fetches the data
   - Service that is injected in different components, holding some state
 
@@ -110,5 +110,13 @@ export class AppComponent implements OnInit, OnDestroy {
     - We then use child routes, component templates that appears in the nested router-outlet
   - "Required for lazy loading"
   - See product-routing.module for info
+
+
+  # VALIDATING FORM CONTROLS IN CHILD ROUTE COMPONENTS
+  - The child routes components are destroyed when user navigates between child routes, that means form validation state is also destroyed
+  - When using template driven forms, it wont work to put <form> in parent component and a form controls in child component, Angular will ignore form controls in an <router-outlet>
+  - We can use <form> in each child component and use manual validation that is not dependant of the form
+  - I think with reactive forms / model driven forms, that we could have a form in each sub route... But Iam not sure at the moment
+    - The teacher is using template driven forms, so lets just go along with the course for now
 
 */

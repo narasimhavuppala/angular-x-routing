@@ -14,6 +14,8 @@ import { MessageService } from 'app/core/message.service';
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
 
+  private dataIsValid: { [key: string]: boolean } = {};         // { 'key': true }
+
   pageTitle = '';
   errorMessage: string;
   product: ProductModel;
@@ -42,8 +44,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     // We no longer get the id and fetch the product via productService since we are using a resolver instead
 
     // subscribing to resolve
+    // for just getting it via snapshot.data without subscription, see product-detail.component
     this.activatedRouteSubscription = this.activatedRoute.data.subscribe((data) => {
-      this.product = JSON.parse(JSON.stringify(data['product'])); // we edit on a copy, in case user cancels
+      // We edit on a copy, in case user cancels. This dont work now, since child components that have the forms, also has instances of product
+      // this.product = JSON.parse(JSON.stringify(data['product']));
+      this.product = data['product'];
       this.pageTitle = this.product.id === 0 ? 'Create Product' : `Edit ${this.product.productName}`;
     });
   }
@@ -66,6 +71,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   saveProduct() {
     // Doing the long hand version
 
+    if(!this.isValid()) {
+      return;
+    }
+
     const observer: Observer<ProductModel> = {
       next: (product: ProductModel) => this.router.navigate(['/products', product.id]),
       error: (error: any) => console.log(error),
@@ -82,6 +91,44 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.productDeleteSubscription = this.productService.deleteProduct(this.product.id).subscribe(() => {
       this.router.navigate(['/products']);
     });
+  }
+
+  isValid(path?: string) {
+    this.validate();
+
+    if (path) {
+      return this.dataIsValid[path];
+    }
+    return (this.dataIsValid &&
+      Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
+  }
+
+  validate() {
+
+    // Manual validation
+    // This component and its children (product-edit-info and product-edit-tags) gets the same instance
+    // So it doesnt matter that the child components and their form validation state is destroyed, 
+    // we still have access to the product instance here.
+
+    // Clear the validation object
+    this.dataIsValid = {};
+
+    // 'info' tab
+    if (this.product.productName &&
+      this.product.productName.length >= 3 &&
+      this.product.productCode) {
+      this.dataIsValid['info'] = true;
+    } else {
+      this.dataIsValid['info'] = false;
+    }
+
+    // 'tags' tab
+    if (this.product.category &&
+      this.product.category.length >= 3) {
+      this.dataIsValid['tags'] = true;
+    } else {
+      this.dataIsValid['tags'] = false;
+    }
   }
 
   // private onGetProductId(params: ParamMap) {

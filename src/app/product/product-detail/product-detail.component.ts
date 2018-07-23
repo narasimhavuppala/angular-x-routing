@@ -29,7 +29,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     // this.productSubscription = this.productService.getProduct(id).subscribe(p => this.product = p);
 
     // We no longer get the id and fetch the product via productService since we are using a resolver instead
-
+    // Here we are getting the product via snapshot.data
+    // If the data can change, we need to subscribe, see product-edit.component
     this.product = this.activatedRoute.snapshot.data['product'];
   }
 
