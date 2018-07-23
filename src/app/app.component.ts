@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
     - See product-routing.module, product-edit.component and product-detail.component
   - Optional route parameters, as seen below
   - Query parameters 
-    - As seen in product-list.component and product-detail.component to retain settings for filter and showing images
+    - As seen in product-list.component and product-detail.component (see also comments in templates) to retain settings for filter and showing images
   - Route:s data property
     - Can not change, use for static data
     - See product-routing.module and product-list.component for retrieving it

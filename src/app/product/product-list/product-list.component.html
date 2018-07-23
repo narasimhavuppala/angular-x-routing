@@ -64,7 +64,7 @@
                                 this.activatedRoute.queryParamMap.subscribe
                             -->
                             <a [routerLink]="['/products', product.id]" 
-                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here. In product-detail.component:s back link we preserve them -->
+                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here in link to product-detail. In product-detail.component:s back link we preserve them -->
                                 {{product.productName}} {{ product.id }}
                             </a>
                         </td>
