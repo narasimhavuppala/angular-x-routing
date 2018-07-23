@@ -65,7 +65,7 @@
                             -->
                             <a [routerLink]="['/products', product.id]" 
                                 [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here in link to product-detail. In product-detail.component:s back link we preserve them -->
-                                {{product.productName}} {{ product.id }}
+                                {{product.productName}} id: {{ product.id }}
                             </a>
                         </td>
                         <td>{{ product.productCode | lowercase }}</td>
