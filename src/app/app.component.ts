@@ -101,4 +101,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   paramMap vs queryParamMap
   https://stackoverflow.com/questions/49615857/angular-parammap-vs-queryparammap
+
+
+  # CHILD ROUTES
+  -- Display routed component:s templates in other routed component:s templates
+  - We use <router-outlet> in app.component.html and templates are loaded there
+  - We can use a nested <router-outlet>, in other words a router-outlet in for example product-edit.component
+    - We then use child routes, component templates that appears in the nested router-outlet
+  - "Required for lazy loading"
+  - See product-routing.module for info
+
 */

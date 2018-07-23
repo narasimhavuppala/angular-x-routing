@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductEditInfoComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: string;
+  product = { id: 1, productName: 'test', productCode: 'test' };
 
-  // TODO
+  constructor() { }
 
   ngOnInit() {
   }

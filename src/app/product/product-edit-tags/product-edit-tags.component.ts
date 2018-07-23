@@ -6,11 +6,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductEditTagsComponent implements OnInit {
 
+  errorMessage: string;
+  newTags = '';
+  product = { id: 1, category: 'test', tags: ['test'] };
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  // TODO
+  addTags() {
+    let tagArray = this.newTags.split(',');
+    this.product.tags = this.product.tags ? this.product.tags.concat(tagArray) : tagArray;
+    this.newTags = '';
+  }
+
+  removeTag(idx: number) {
+    this.product.tags.splice(idx, 1);
+  }
 
 }
