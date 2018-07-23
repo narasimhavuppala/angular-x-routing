@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.pageTitle = this.activatedRoute.snapshot.data['pageTitle']; // we never subscribe to data since it is always static
+    this.pageTitle = this.activatedRoute.snapshot.data['pageTitle']; // we never subscribe to data in route data property since it is always static
     this.productsSubscription = this.productService.getProducts().subscribe(p => this.products = p);
 
     this.listFilter = this.activatedRoute.snapshot.queryParamMap.get('filterBy') || '';

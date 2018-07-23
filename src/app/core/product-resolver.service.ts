@@ -25,6 +25,10 @@ export class ProductResolverService implements Resolve<ProductModel> {
         // The resolve function can return an Observable, a promise or just data
     ): Observable<ProductModel> {
 
+        console.log(
+            state.root
+        );
+
         // Benefits of using a resolver
         // - all data is loaded, so user wont see partial info (is that really a benefit?)
         // - we can do error handling here and redirect if something goes wrong

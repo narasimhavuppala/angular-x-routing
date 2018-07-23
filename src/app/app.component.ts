@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserModel } from 'app/user/user.model';
@@ -11,20 +12,41 @@ import { AuthService } from 'app/core/auth.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
-  user:UserModel = null;
+  activatedRouteSubscription: Subscription;
+  routeParamSubscription: Subscription;
+  user: UserModel = null;
   pageTitle = 'Acme Product Management';
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
   }
 
-  ngOnInit() { 
+  ngOnInit() {
+    // Can we get to the data property from this not routable component? No!
+    // console.log(this.activatedRoute.snapshot.data['pageTitle']);
+
+    // Can we subscribe to a resolve from this not routable component? No!
+    // this.activatedRouteSubscription = this.activatedRoute.data.subscribe((data) => {
+    //   console.log(data);
+    // });
+
+    // Can we get to route parameters from this not routable component? No!
+    // "ActivatedRoute won't work on AppComponent"
+    // https://stackoverflow.com/questions/40012369/how-to-get-the-active-route-in-app-component
+    // https://github.com/angular/angular/issues/11023
+    // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe((p) => { 
+    //   console.log(p);
+    // });
+
     this.userSubscription = this.authService.user$.subscribe(user => this.user = user);
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     this.userSubscription.unsubscribe();
+    this.activatedRouteSubscription.unsubscribe();
+    this.routeParamSubscription.unsubscribe();
   }
 
   logOut() {
