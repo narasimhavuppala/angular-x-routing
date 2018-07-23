@@ -9,9 +9,24 @@ import { ProductResolverService } from 'app/core/product-resolver.service';
 
 const routes: Routes = [
   {
-    // A component-less route
-    // The router will then NOT look for a router-outlet in product-list.component, it will instead put the top lever children in app.component:s router outlet
-    // The bottom level children, under :id/edit will however still be put in router-outlet in product-edit.component
+    /*
+
+      A component-less route
+      The router will then NOT look for a router-outlet in product-list.component, it will instead put the top lever children in app.component:s router outlet
+      The bottom level children, under :id/edit will however still be put in router-outlet in product-edit.component
+
+      Before product-detail.component and product-edit.component were also shown in app.component:s router-outlet
+      But with grouping it like this under component-less route, 'products' we get some benefints (according to the teacher)
+        - Better organisation
+        - Can better share resolvers and guards
+        - More options for lazy loading
+        - shorter path names
+
+
+      OBS: SEE THE COMMENTED OUT CODE BELLOW FOR MORE INFO ON ROUTES AND RESOLVERS
+
+    */
+
     path: 'products',
     data: {
       // Must contain static data
