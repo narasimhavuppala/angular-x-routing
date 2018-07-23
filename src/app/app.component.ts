@@ -109,7 +109,7 @@ export class AppComponent implements OnInit, OnDestroy {
   - We can use a nested <router-outlet>, in other words a router-outlet in for example product-edit.component
     - We then use child routes, component templates that appears in the nested router-outlet
   - "Required for lazy loading"
-  - See product-routing.module for info
+  - See product-routing.module for info, and product-edit-info.component and product-edit-tags.component for getting resolve data in child route components
 
 
   # VALIDATING FORM CONTROLS IN CHILD ROUTE COMPONENTS
