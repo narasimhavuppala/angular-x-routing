@@ -142,7 +142,7 @@ export class AppComponent implements OnInit, OnDestroy {
   - from code: this.router.navigate([{ outlets: { popup: ['messages'] } }]);
   - for routing to both primary and secondary, same syntax as above ... Although buggy
 
-  - Teacher says this is workaround for the bug
+  - Teacher says this is workaround for the bug (because the not names outlet is default named primary)
   this.router.navigate(
     [
       {
