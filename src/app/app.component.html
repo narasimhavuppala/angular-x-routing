@@ -1,3 +1,25 @@
+<!-- 
+
+  In a real app, I would have refactored this template into several components...
+
+-->
+
+<div class="app-loading" *ngIf="loading">
+  <div class="sk-fading-circle">
+    <div class="sk-circle1 sk-circle"></div>
+    <div class="sk-circle2 sk-circle"></div>
+    <div class="sk-circle3 sk-circle"></div>
+    <div class="sk-circle4 sk-circle"></div>
+    <div class="sk-circle5 sk-circle"></div>
+    <div class="sk-circle6 sk-circle"></div>
+    <div class="sk-circle7 sk-circle"></div>
+    <div class="sk-circle8 sk-circle"></div>
+    <div class="sk-circle9 sk-circle"></div>
+    <div class="sk-circle10 sk-circle"></div>
+    <div class="sk-circle11 sk-circle"></div>
+    <div class="sk-circle12 sk-circle"></div>
+  </div>
+</div>
 <div>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -17,7 +39,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a>Welcome <ng-container *ngIf="user">{{ user.userName }}</ng-container></a>
+          <a>Welcome
+            <ng-container *ngIf="user">{{ user.userName }}</ng-container>
+          </a>
         </li>
         <li>
           <a>Show Messages</a>

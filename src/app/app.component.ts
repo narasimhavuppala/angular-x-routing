@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserModel } from 'app/user/user.model';
@@ -12,13 +12,16 @@ import { AuthService } from 'app/core/auth.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
-  activatedRouteSubscription: Subscription;
-  routeParamSubscription: Subscription;
+  // activatedRouteSubscription: Subscription;
+  // routeParamSubscription: Subscription;
+  routChangeSubscription: Subscription;
   user: UserModel = null;
   pageTitle = 'Acme Product Management';
+  loading = true;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    //private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
   }
@@ -41,12 +44,23 @@ export class AppComponent implements OnInit, OnDestroy {
     // });
 
     this.userSubscription = this.authService.user$.subscribe(user => this.user = user);
+
+    this.routChangeSubscription = this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof NavigationStart) {
+        this.loading = true;
+      }
+
+      if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
+        this.loading = false;
+      }
+    });
   }
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
-    this.activatedRouteSubscription.unsubscribe();
-    this.routeParamSubscription.unsubscribe();
+    //this.activatedRouteSubscription.unsubscribe();
+    // this.routeParamSubscription.unsubscribe();
+    this.routChangeSubscription.unsubscribe();
   }
 
   logOut() {
@@ -118,5 +132,9 @@ export class AppComponent implements OnInit, OnDestroy {
   - We can use <form> in each child component and use manual validation that is not dependant of the form
   - I think with reactive forms / model driven forms, that we could have a form in each sub route... But Iam not sure at the moment
     - The teacher is using template driven forms, so lets just go along with the course for now
+
+
+  # ROUTING EVENTS
+  - use { enableTracing: true } as second argument for RouterModule.forRoot() to see them, see app-routing.module
 
 */
