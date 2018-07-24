@@ -5,8 +5,8 @@
 
     <div class="panel-body" *ngIf="product">
         <div class="wizard">
-            <a [routerLink]="['info']">Basic Information</a>
-            <a [routerLink]="['tags']">Search Tags</a>
+            <a [routerLink]="['info']" routerLinkActive="active">Basic Information</a>
+            <a [routerLink]="['tags']" routerLinkActive="active">Search Tags</a>
             <!--
                 There are 2 ways to activate a child route
                 - With a relative path (does not begin with a slash), as shown above, often the better choice since its not affected by parent route structure

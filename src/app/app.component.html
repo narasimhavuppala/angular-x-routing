@@ -5,13 +5,13 @@
       <ul class="nav navbar-nav">
         <li>
           <!-- A link parameters array, here we could have used the shorthand syntax <a routerLink="/welcome" -->
-          <a [routerLink]="['/welcome']">Home</a>
+          <a [routerLink]="['/welcome']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
         </li>
         <li>
-          <a [routerLink]="['/products']">Product List</a>
+          <a [routerLink]="['/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Product List</a>
         </li>
         <li>
-          <a [routerLink]="['/products', 0, 'edit']">Add Product</a>
+          <a [routerLink]="['/products', 0, 'edit']" routerLinkActive="active">Add Product</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
