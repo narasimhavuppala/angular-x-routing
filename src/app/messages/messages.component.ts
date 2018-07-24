@@ -8,8 +8,10 @@ import { MessageService } from 'app/core/message.service';
 export class MessagesComponent {
 
   constructor(
-    messageService: MessageService
-  ) { }
+    private messageService: MessageService
+  ) { 
+
+  }
 
   close() {
     console.log('close popup');

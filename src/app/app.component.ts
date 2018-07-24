@@ -117,4 +117,11 @@ export class AppComponent implements OnInit, OnDestroy {
   # ROUTING EVENTS
   - use { enableTracing: true } as second argument for RouterModule.forRoot() to see them, see app-routing.module
 
+
+  # SECONDARY ROUTES
+  - See app.component for <router-outlet> with a name and messages-routing.module for route
+  - Use a link like this to trigger a secondary route: [routerLink]="[{ outlets: { popup: ['messages'] } }]"
+  - Can navigate to both a primary route and a secondary route, though teacher says it is buggy in her version of Angular
+  [routerLink]="['/products', product.id, 'edit', { outlets: { popup: ['messages', foo.id] } } ]"
+
 */

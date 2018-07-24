@@ -24,7 +24,7 @@
           </a>
         </li>
         <li>
-          <a>Show Messages</a>
+          <a [routerLink]="[{ outlets: { popup: ['messages'] } }]">Show Messages</a>
         </li>
         <li *ngIf="!user">
           <a [routerLink]="['/login']">Log In</a>
@@ -36,7 +36,14 @@
     </div>
   </nav>
   <div class="container">
-    <!-- Can only display one route component at a time. But we can have multiple outlets -->
-    <router-outlet></router-outlet>
+    <div class="row">
+      <div class="col-md-10">
+        <!-- Can only display one route component at a time. But we can have multiple outlets, as shown below, need to name them though -->
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-2">
+        <router-outlet name="popup"></router-outlet>
+      </div>
+    </div>
   </div>
 </div>
