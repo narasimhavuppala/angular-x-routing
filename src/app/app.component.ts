@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, RouterEvent, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserModel } from 'app/user/user.model';
@@ -12,16 +11,10 @@ import { AuthService } from 'app/core/auth.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
-  // activatedRouteSubscription: Subscription;
-  // routeParamSubscription: Subscription;
-  routChangeSubscription: Subscription;
   user: UserModel = null;
   pageTitle = 'Acme Product Management';
-  loading = true;
 
   constructor(
-    private router: Router,
-    //private activatedRoute: ActivatedRoute,
     private authService: AuthService
   ) {
   }
@@ -44,23 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
     // });
 
     this.userSubscription = this.authService.user$.subscribe(user => this.user = user);
-
-    this.routChangeSubscription = this.router.events.subscribe((event: RouterEvent) => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      }
-
-      if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
-        this.loading = false;
-      }
-    });
   }
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
-    //this.activatedRouteSubscription.unsubscribe();
-    // this.routeParamSubscription.unsubscribe();
-    this.routChangeSubscription.unsubscribe();
   }
 
   logOut() {
