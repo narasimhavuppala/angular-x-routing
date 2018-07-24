@@ -5,7 +5,8 @@
       <ul class="nav navbar-nav">
         <li>
           <!-- A link parameters array, here we could have used the shorthand syntax <a routerLink="/welcome" -->
-          <a [routerLink]="['/welcome']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+          <!-- routerLinkActive also works on ancestor elements -->
+          <a [routerLink]="['/welcome']" routerLinkActive="active">Home</a>
         </li>
         <li>
           <a [routerLink]="['/products']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Product List</a>
