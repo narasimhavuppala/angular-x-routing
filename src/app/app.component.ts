@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserModel } from 'app/user/user.model';
 import { AuthService } from 'app/core/auth.service';
+import { MessageService } from 'app/core/message.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,9 @@ export class AppComponent implements OnInit, OnDestroy {
   pageTitle = 'Acme Product Management';
 
   constructor(
-    private authService: AuthService
+    private router: Router,
+    private authService: AuthService,
+    private messageService: MessageService
   ) {
   }
 
@@ -45,6 +49,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logOut() {
     this.authService.logout();
+  }
+
+  displayMessages() {
+    this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+    this.messageService.isDisplayed = true;
+  }
+
+  hideMessages() { 
+    this.router.navigate([{ outlets: { popup: null } }]);
+    this.messageService.isDisplayed = false;
   }
 }
 
@@ -119,7 +133,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   # SECONDARY ROUTES
-  - See app.component for <router-outlet> with a name and messages-routing.module for route
+  - They only makes sense if we want to show multiple routable components in a router-outlet, in our case we only show messages so a single plain and simple component would have been enough
+  - See app.component for <router-outlet> and links with a name and messages-routing.module for route
   - Use a link like this to trigger a secondary route: [routerLink]="[{ outlets: { popup: ['messages'] } }]"
   - Can navigate to both a primary route and a secondary route, though teacher says it is buggy in her version of Angular
   [routerLink]="['/products', product.id, 'edit', { outlets: { popup: ['messages', foo.id] } } ]"
@@ -137,6 +152,15 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     ]
-  )
+  );
+
+  Other option is to use the navigateByUrl and build the URL manually
+  this.router.navigateByUrl('/products/5/edit(popup:summary/5)');
+
+
+  We can clear a secondary route by passing null: [routerLink]="[{ outlets: { popup: null } }]"
+  Same principle when navigating from code
+
+  Can also use this.router.navigateByUrl('/foo')
 
 */

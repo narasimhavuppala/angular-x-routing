@@ -1,4 +1,8 @@
-nav a {
+.navbar-right {
+    min-width: 120px;
+}
+
+nav a, nav button {
     padding-left: 4px;
     border-left: 4px solid transparent;
 }

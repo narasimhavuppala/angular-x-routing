@@ -24,7 +24,9 @@
           </a>
         </li>
         <li>
-          <a [routerLink]="[{ outlets: { popup: ['messages'] } }]">Show Messages</a>
+          <!-- <a [routerLink]="[{ outlets: { popup: ['messages'] } }]">Show Messages</a> -->
+          <button class="btn btn-link app-btn-vanilla-link" (click)="displayMessages()" *ngIf="!messageService.isDisplayed">Show Messages</button>
+          <button class="btn btn-link app-btn-vanilla-link" (click)="hideMessages()" *ngIf="messageService.isDisplayed">Hide Messages</button>
         </li>
         <li *ngIf="!user">
           <a [routerLink]="['/login']">Log In</a>
