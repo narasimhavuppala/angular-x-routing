@@ -124,4 +124,19 @@ export class AppComponent implements OnInit, OnDestroy {
   - Can navigate to both a primary route and a secondary route, though teacher says it is buggy in her version of Angular
   [routerLink]="['/products', product.id, 'edit', { outlets: { popup: ['messages', foo.id] } } ]"
 
+  - from code: this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+  - for routing to both primary and secondary, same syntax as above ... Although buggy
+
+  - Teacher says this is workaround for the bug
+  this.router.navigate(
+    [
+      {
+        outlets: {
+          primary: ['a', a.id]
+          popup: ['foo', bar.id]
+        }
+      }
+    ]
+  )
+
 */
