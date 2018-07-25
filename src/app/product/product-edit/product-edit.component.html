@@ -141,7 +141,7 @@
                     </a>
                 </span>
                 <span>
-                    <button class="btn btn-link" (click)="deleteProduct()">
+                    <button class="btn btn-link" (click)="deleteProduct()" *ngIf="product.id !== 0">
                         Delete
                     </button>
                 </span>

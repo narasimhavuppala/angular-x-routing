@@ -27,13 +27,13 @@ export class ProductEditInfoComponent implements OnInit, OnDestroy {
 
     // Get the data from parents resolver via subscription
     this.activatedRouteSubscription = this.activatedRoute.parent.data.subscribe((data) => {
-      this.product = data['product'];
-
       if (this.productForm) {
         // Reset form and validation when new data arrives, for example user is creating (clicks on Add Product in top menu link) instead of editing
         // We do not need this logic in product-edit-tags.component since this route is the default...
         this.productForm.reset();
       }
+
+      this.product = data['product'];
     });
   }
 
