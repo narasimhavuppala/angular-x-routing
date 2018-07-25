@@ -7,10 +7,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
-    currentUser: UserModel;
 
     private userSource = new BehaviorSubject<UserModel>(null);
     user$ = this.userSource.asObservable();
+
+    currentUser: UserModel;
+    redirectUrl: string;
 
     constructor(
         private router: Router,
@@ -60,6 +62,13 @@ export class AuthService {
         this.userSource.next(this.currentUser);
         
         // Could use shorthand syntax (just like in directive) this.router.navigate('products')
-        this.router.navigate(['/products']);
+        // Instead of always redirect to /products after login, we instead redirect to the url the user wanted to reach, the property redirectUrl is set in the auth-guard.service
+        // this.router.navigate(['/products']);
+        
+        if(this.redirectUrl) {
+            this.router.navigateByUrl(this.redirectUrl);
+        } else {
+            this.router.navigate(['/products']);
+        }
     }
 }
