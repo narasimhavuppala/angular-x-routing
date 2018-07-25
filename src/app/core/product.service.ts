@@ -7,14 +7,15 @@ import { ProductModel } from 'app/data/product.model';
 import { productData } from 'app/data/product-data';
 
 // Faking an async API
-// this.products is mutaded in here, not optimal?
+// this.products is mutaded in here, not optimal? -- We changed a bit of that, so edit is on a copy
 
 export class ProductService {
 
     private products = productData;
 
     getProducts() {
-        return Observable.of(this.products);
+        const products = JSON.parse(JSON.stringify(this.products));
+        return Observable.of(products);
     }
 
     // view, edit, create
@@ -24,11 +25,12 @@ export class ProductService {
             return Observable.of(this.initializeProduct()).delay(1000);
         }
 
-        return Observable.of(this.products.find(p => p.id === id)).delay(1000);
+        const product = JSON.parse(JSON.stringify(this.products.find(p => p.id === id)));
+        return Observable.of(product).delay(1000);
     }
 
-    createProduct(product: ProductModel): Observable<ProductModel> {
-        return Observable.create((observer: Observer<ProductModel>) => {
+    createProduct(product: ProductModel): Observable<number> {
+        return Observable.create((observer: Observer<number>) => {
             let maxId = 0;
             this.products.forEach((p) => {
                 maxId = Math.max(p.id, maxId)
@@ -37,15 +39,15 @@ export class ProductService {
             product.id = maxId + 1;
 
             this.products.push(product);
-            observer.next(product);
+            observer.next(product.id);
         });
     }
 
-    updateProduct(product: ProductModel): Observable<ProductModel> {
-        return Observable.create((observer: Observer<ProductModel>) => {
+    updateProduct(product: ProductModel): Observable<number> {
+        return Observable.create((observer: Observer<number>) => {
             const productIndex = this.products.findIndex(p => p.id === product.id);
             this.products.splice(productIndex, 1, product);
-            observer.next(product);
+            observer.next(product.id);
         });
     }
 
