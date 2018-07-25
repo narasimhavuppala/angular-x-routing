@@ -182,6 +182,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   Adding a guard to a parent guards each of its children.
 
+  "Example: You could have a situation where a user must be authenticated to navigate to the root component, but must have permission 'x' to get to child components. 
+  In cases like this, canActivateChild saves a lot of typing from having to add canActivate guards to each of the children."
+  https://stackoverflow.com/questions/42632154/trying-to-understand-the-differences-between-canactivate-and-canactivatechild/42632375
+
+  canActivate are not reexecuted when child routes are begin requested again. But canActivateChild is reexecuted.
+
   See auth-guard.service and product-routing.module
 
 */
