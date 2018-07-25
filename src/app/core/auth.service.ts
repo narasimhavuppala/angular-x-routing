@@ -18,10 +18,10 @@ export class AuthService {
     ) { }
 
     // This was called from template in app.component, but we use emit emitter instead, for perfomance(?)
-    // isLoggedIn(): boolean {
-    //     console.log('CHECKING isLoggedIn');
-    //     return !!this.currentUser;
-    // }
+    // But we need it now for our auth-guard.service
+    isLoggedIn(): boolean {
+        return !!this.currentUser;
+    }
 
     login(userName: string, password: string): void {
         if (!userName || !password) {

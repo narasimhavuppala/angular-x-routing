@@ -6,6 +6,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.component';
 import { ProductEditTagsComponent } from './product-edit-tags/product-edit-tags.component';
 import { ProductResolverService } from 'app/core/product-resolver.service';
+import { AuthGuardService } from 'app/core/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       // Must contain static data
       pageTitle: 'Product List'
     },
+    canActivate: [
+      // Can have multiple
+      AuthGuardService
+    ],
     children: [
       {
         path: '',

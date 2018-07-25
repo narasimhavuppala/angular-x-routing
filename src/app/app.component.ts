@@ -163,4 +163,25 @@ export class AppComponent implements OnInit, OnDestroy {
 
   Can also use this.router.navigateByUrl('/foo')
 
+
+  # ROUTE GUARDS
+  -- Limit access, warn before leaving
+
+  - canActivate
+  - canDeactivate
+  - canActivateChild
+  - No canDeactivateChild: https://github.com/angular/angular/issues/11836
+  - canLoad (prevent async routing)
+
+
+  Guard Processing
+    canDeactivate > canLoad > canActivateChild > canActivate > resolve
+  If anyone return false, all other are canceled and the route request is canceled
+
+  RouteGuards are constructed as services or functions. The service must be provided at the module level.
+
+  Adding a guard to a parent guards each of its children.
+
+  See auth-guard.service and product-routing.module
+
 */
