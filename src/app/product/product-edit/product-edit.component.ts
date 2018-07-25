@@ -84,7 +84,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     const observer: Observer<number> = {
       next: (id: number) => {
         this.reset();
-        this.router.navigate(['/products', id])
+        this.router.navigate(['/products', id]);
       },
       error: (error: any) => console.log(error),
       complete: () => console.log('complete')

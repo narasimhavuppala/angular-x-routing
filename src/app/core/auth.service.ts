@@ -60,12 +60,12 @@ export class AuthService {
     private communicateLoggedIn(message: string) {
         this.messageService.addMessage(message);
         this.userSource.next(this.currentUser);
-        
+
         // Could use shorthand syntax (just like in directive) this.router.navigate('products')
         // Instead of always redirect to /products after login, we instead redirect to the url the user wanted to reach, the property redirectUrl is set in the auth-guard.service
         // this.router.navigate(['/products']);
-        
-        if(this.redirectUrl) {
+
+        if (this.redirectUrl) {
             this.router.navigateByUrl(this.redirectUrl);
         } else {
             this.router.navigate(['/products']);

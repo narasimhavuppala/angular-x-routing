@@ -7,14 +7,11 @@ export class ProductGuardService implements CanDeactivate<ProductEditComponent> 
 
     // We get the component as parameter
     canDeactivate(component: ProductEditComponent): boolean {
-
-        if(component.isDirty()) {
+        if (component.isDirty()) {
             const productName = component.product.productName || 'New Product';
             return confirm(`Navigate away and lose all changes to ${productName}?`);
         }
 
         return true;
-
     }
-
 } 

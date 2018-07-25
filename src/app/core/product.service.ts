@@ -33,7 +33,7 @@ export class ProductService {
         return Observable.create((observer: Observer<number>) => {
             let maxId = 0;
             this.products.forEach((p) => {
-                maxId = Math.max(p.id, maxId)
+                maxId = Math.max(p.id, maxId);
             });
 
             product.id = maxId + 1;

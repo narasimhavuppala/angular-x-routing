@@ -76,7 +76,7 @@ const routes: Routes = [
         ]
       }
     ]
-  }//,
+  }// ,
   // 
   //    WE PUT THESE AS CHILDRE TO THE PRODUCT ROUTE INSTEAD
   //    BUT THE COMMENTS BELLOW CONTAINS USEFUL INFORMATION

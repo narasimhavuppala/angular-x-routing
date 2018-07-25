@@ -35,7 +35,7 @@ export class ProductEditTagsComponent implements OnInit, OnDestroy {
   }
 
   addTags() {
-    let tagArray = this.newTags.split(',');
+    const tagArray = this.newTags.split(',');
     this.product.tags = this.product.tags ? this.product.tags.concat(tagArray) : tagArray;
     this.newTags = '';
   }

@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // "ActivatedRoute won't work on AppComponent"
     // https://stackoverflow.com/questions/40012369/how-to-get-the-active-route-in-app-component
     // https://github.com/angular/angular/issues/11023
-    // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe((p) => { 
+    // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe((p) => {
     //   console.log(p);
     // });
 
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.messageService.isDisplayed = true;
   }
 
-  hideMessages() { 
+  hideMessages() {
     this.router.navigate([{ outlets: { popup: null } }]);
     this.messageService.isDisplayed = false;
   }
