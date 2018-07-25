@@ -15,6 +15,7 @@ import { MessageService } from 'app/core/message.service';
 export class ProductEditComponent implements OnInit, OnDestroy {
 
   private dataIsValid: { [key: string]: boolean } = {};         // { 'key': true }
+  private originalProduct: ProductModel;
 
   pageTitle = '';
   errorMessage: string;
@@ -35,6 +36,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('INIT');
+
     // We need to subscribe to params here (instead of using snapshot), so new data is fetched if user clicks create product from the top menu (a new id with value 0 is sent with the route, AND this component is NOT recreated)
     // this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
 
@@ -46,9 +49,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     // subscribing to resolve
     // for just getting it via snapshot.data without subscription, see product-detail.component
     this.activatedRouteSubscription = this.activatedRoute.data.subscribe((data) => {
-      // We edit on a copy, in case user cancels. This dont work now, since child components that have the forms, also has instances of product
-      // this.product = JSON.parse(JSON.stringify(data['product']));
       this.product = data['product'];
+      this.originalProduct = JSON.parse(JSON.stringify(this.product));
       this.pageTitle = this.product.id === 0 ? 'Create Product' : `Edit ${this.product.productName}`;
     });
   }
@@ -68,15 +70,22 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     }
   }
 
+  isDirty() {
+    return JSON.stringify(this.product) !== JSON.stringify(this.originalProduct);
+  }
+
   saveProduct() {
     // Doing the long hand version
 
-    if(!this.isValid()) {
+    if (!this.isValid()) {
       return;
     }
 
     const observer: Observer<number> = {
-      next: (id: number) => this.router.navigate(['/products', id]),
+      next: (id: number) => {
+        this.reset();
+        this.router.navigate(['/products', id])
+      },
       error: (error: any) => console.log(error),
       complete: () => console.log('complete')
     };
@@ -89,21 +98,26 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   deleteProduct() {
     // Doing the shorthand version, just next callback
     this.productDeleteSubscription = this.productService.deleteProduct(this.product.id).subscribe(() => {
+      this.reset();
       this.router.navigate(['/products']);
     });
   }
 
   isValid(path?: string) {
+    if(!this.product) {
+      return false;
+    }
+
     this.validate();
 
     if (path) {
       return this.dataIsValid[path];
     }
-    return (this.dataIsValid &&
-      Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
+    
+    return (this.dataIsValid && Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
   }
 
-  validate() {
+  private validate() {
 
     // Manual validation
     // This component and its children (product-edit-info and product-edit-tags) gets the same instance
@@ -129,6 +143,12 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     } else {
       this.dataIsValid['tags'] = false;
     }
+  }
+
+  private reset() {
+    this.dataIsValid = null;
+    this.originalProduct = null;
+    this.product = null;
   }
 
   // private onGetProductId(params: ParamMap) {

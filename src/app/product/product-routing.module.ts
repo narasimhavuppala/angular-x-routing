@@ -7,6 +7,7 @@ import { ProductEditInfoComponent } from './product-edit-info/product-edit-info.
 import { ProductEditTagsComponent } from './product-edit-tags/product-edit-tags.component';
 import { ProductResolverService } from 'app/core/product-resolver.service';
 import { AuthGuardService } from 'app/core/auth-guard.service';
+import { ProductGuardService } from 'app/core/product-guard.service';
 
 const routes: Routes = [
   {
@@ -55,6 +56,9 @@ const routes: Routes = [
         resolve: {
           product: ProductResolverService
         },
+        canDeactivate: [
+          ProductGuardService
+        ],
         children: [
           {
             path: '',

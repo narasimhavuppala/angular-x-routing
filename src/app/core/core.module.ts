@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { ProductResolverService } from './product-resolver.service';
 import { AuthGuardService } from './auth-guard.service';
 import { LoadingComponent } from './loading/loading.component';
+import { ProductGuardService } from './product-guard.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { LoadingComponent } from './loading/loading.component';
     ProductService,
     AuthService,
     ProductResolverService,
-    AuthGuardService
+    AuthGuardService,
+    ProductGuardService
   ],
   declarations: [
     LoadingComponent
