@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+
 import { ProductModel } from 'app/data/product.model';
 
 @Component({
   selector: 'app-product-edit-tags',
   templateUrl: './product-edit-tags.component.html'
 })
-export class ProductEditTagsComponent implements OnInit {
+export class ProductEditTagsComponent implements OnInit, OnDestroy {
 
+  activatedRouteSubscription: Subscription;
   errorMessage: string;
   newTags = '';
   product: ProductModel;
@@ -22,9 +25,13 @@ export class ProductEditTagsComponent implements OnInit {
     // this.product = this.activatedRoute.parent.snapshot.data['product'];
 
     // Get the data from parents resolver via subscription
-    this.activatedRoute.parent.data.subscribe((data) => { 
+    this.activatedRouteSubscription = this.activatedRoute.parent.data.subscribe((data) => {
       this.product = data['product'];
     });
+  }
+
+  ngOnDestroy() {
+    this.activatedRouteSubscription.unsubscribe();
   }
 
   addTags() {
