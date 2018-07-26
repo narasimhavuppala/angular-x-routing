@@ -190,4 +190,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   See auth-guard.service and product-routing.module
 
+
+  # LAZY LOADING
+
+  - Preparing
+    - Use a feature module with routable components, the scripts and css for all components in that module will then be lazy loaded
+    - Lazy loaded routes should be grouped under a single parent, because lazy loading is configured on the parent route
+    - DO NOT import the lazy loaded feature module in ANY other module
+
+  See app-routing.module
+
 */

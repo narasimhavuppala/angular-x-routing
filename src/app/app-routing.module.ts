@@ -3,11 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { Page404Component } from './page-404/page-404.component';
+import { AuthGuardService } from 'app/core/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'welcome',
     component: HomeComponent
+  },
+  {
+    // LAZY LOADING
+    // -- This should object is here in sync with version 3 of route configuration in product-routing.module
+    path: 'products',
+    // path is relative to index.html
+    loadChildren: 'app/product/product.module#ProductModule',
+    canActivate: [AuthGuardService]
   },
   {
     path: '',
