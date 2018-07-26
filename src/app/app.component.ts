@@ -192,6 +192,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   # LAZY LOADING
+  -- A chunk of javascript (with css and templates) for a module is only downloaded when a user is requesting a route
 
   - Preparing
     - Use a feature module with routable components, the scripts and css for all components in that module will then be lazy loaded
@@ -203,5 +204,57 @@ export class AppComponent implements OnInit, OnDestroy {
   We can instead use a canLoad guard to prevent that
 
   See app-routing.module, auth-guard.service
+
+
+  # Preloading (Eager Lazy Loading)
+  -- We can preload a lazy loaded module while the user is interacting with the app
+
+  Preloading makes sense if we KNOW that a lazy loaded module will likely be used
+
+  Preload strategies
+  - No preloading, this is default with a lazy loaded route
+  - Preload all, which preloads all after app is loaded
+  - Custom, we can define our own strategy
+
+  The strategy is set in root route configuration
+  - So preload all will apply to ALL lazy loaded routes
+  - For more fine grained control we use a custom strategy
+    - Build a preloading strategy service*
+    - Provide it in a module
+    - Set it in root route configuration
+
+  OBS
+    canLoad will block preloading, since checks in its logic could give a strange user experience, for example navigating to /login when user is on start page
+    Use canActivate instead, since logic for guarding will only be run when user tries to navigate to the guarded route
+
+  See app-routing.module
+
+  *Custom Preload service: https://github.com/DeborahK/Angular-Routing/blob/master/APM-Final/src/app/selective-strategy.service.ts
+
+  import { Injectable } from '@angular/core';
+  import { Route, PreloadingStrategy } from '@angular/router';
+
+  import { Observable } from 'rxjs/Observable';
+  import 'rxjs/add/observable/of';
+
+  @Injectable()
+  export class SelectiveStrategy implements PreloadingStrategy {
+
+    preload(route: Route, load: Function): Observable<any> {
+        // using the data property to determine if a route should be preloaded -- eagerly loaded or lazy loaded
+        if (route.data && route.data['preload']) {
+            return load();
+        }
+        return Observable.of(null);
+    }
+
+  }
+
+  // app-routing.module
+  {
+    path: 'foo',
+    loadChildren: 'app/foo/foo.module#FooModule',
+    data: { preload: true }
+  }
 
 */

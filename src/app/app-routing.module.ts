@@ -37,7 +37,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     // .forRoot() should only be used 1 time in the application , here we use enableTracing for debug info (could use environment debug, so just use in debug mode(?))
-    RouterModule.forRoot(routes) // send in { enableTracing: true } as second argument
+    RouterModule.forRoot(routes)  // send in { enableTracing: true } as second argument
+                                  // send in { preloadingStrategy: PreloadAllModules | } import types from '@angular/router'
   ],
   exports: [
     RouterModule
