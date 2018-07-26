@@ -198,6 +198,10 @@ export class AppComponent implements OnInit, OnDestroy {
     - Lazy loaded routes should be grouped under a single parent, because lazy loading is configured on the parent route
     - DO NOT import the lazy loaded feature module in ANY other module
 
-  See app-routing.module
+
+  With a canActivate guard on a lazy loaded route, the chunk for that module is requested and downloaded even if access is denied.
+  We can instead use a canLoad guard to prevent that
+
+  See app-routing.module, auth-guard.service
 
 */
