@@ -15,10 +15,13 @@ const routes: Routes = [
   // Now we are lazy loading, so this route configuration is changed for the third time
 
   {
+    // The configuration starts with lazy in app-routing.module
+    // /products
     path: '',
     component: ProductListComponent
   },
   {
+    // /products/2
     path: ':id',
     component: ProductDetailComponent,
     resolve: {
@@ -26,6 +29,8 @@ const routes: Routes = [
     }
   },
   {
+    // User never lands on this path because of redirect bellow
+    // But product-edit.component.html has a <router-outlet> that children bellow will have their templates displayed
     path: ':id/edit',
     component: ProductEditComponent,
     resolve: {
@@ -36,15 +41,18 @@ const routes: Routes = [
     ],
     children: [
       {
+        // Redirect
         path: '',
         redirectTo: 'info',
         pathMatch: 'full'
       },
       {
+        // /products/2/edit/info
         path: 'info',
         component: ProductEditInfoComponent
       },
       {
+        // /products/2/edit/tags
         path: 'tags',
         component: ProductEditTagsComponent
       }
