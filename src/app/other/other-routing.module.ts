@@ -6,7 +6,13 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 const routes: Routes = [
     {
         path: 'other',
-        component: OtherComponent
+        component: OtherComponent,
+        children: [
+            {
+                path: 'tooltip',
+                component: TooltipComponent
+            }
+        ]
     }
 ];
 
