@@ -10,7 +10,6 @@ import { UserModule } from './user/user.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { Page404Component } from './page-404/page-404.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    Page404Component,
-    TooltipComponent
+    Page404Component
   ],
   bootstrap: [AppComponent]
 })

@@ -10,7 +10,7 @@ export class MessagesComponent {
 
   constructor(
     private router: Router,
-    private messageService: MessageService
+    public messageService: MessageService
   ) {
 
   }

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { Page404Component } from './page-404/page-404.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
 import { AuthGuardService } from 'app/core/auth-guard.service';
 
 const routes: Routes = [
@@ -18,10 +17,6 @@ const routes: Routes = [
     // path is relative to index.html
     loadChildren: 'app/product/product.module#ProductModule',
     canLoad: [AuthGuardService]
-  },
-  {
-    path: 'tooltip',
-    component: TooltipComponent
   },
   {
     path: '',

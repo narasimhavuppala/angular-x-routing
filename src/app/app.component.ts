@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private messageService: MessageService
+    public messageService: MessageService
   ) {
   }
 

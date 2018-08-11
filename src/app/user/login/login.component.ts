@@ -10,6 +10,9 @@ export class LoginComponent {
   errorMessage: string;
   pageTitle = 'Log In';
 
+  userName;
+  password;
+
   constructor(
     private authService: AuthService
   ) { }
