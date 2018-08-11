@@ -1,0 +1,11 @@
+@import 'app-settings';
+
+.fa-lightbulb {
+    margin-right: $gutter-xs;
+}
+
+.app-btn-vanilla-link {
+    &:hover {
+        text-decoration: none;
+    }
+}
