@@ -7,12 +7,10 @@ const routes: Routes = [
     {
         path: 'other',
         component: OtherComponent,
-        children: [
-            {
-                path: 'tooltip',
-                component: TooltipComponent
-            }
-        ]
+    },
+    {
+        path: 'other/tooltip',
+        component: TooltipComponent
     }
 ];
 
