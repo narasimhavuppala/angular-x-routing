@@ -16,20 +16,34 @@
 
 .app-alert-caret {
     position: absolute;
-    left: app-remy($gutter-sm);
     bottom: -(app-remy(20));
     pointer-events: none; // ?
     color: #d1ecf1;
+
+    &.left {
+        left: app-remy($gutter-sm);
+    }
+
+    &.right {
+        right: app-remy($gutter-sm);
+    }
 }
 
 .alert {
     position: absolute;
     z-index: 1;
-    left: 0;
     bottom: app-remy(8);
     width: app-remy(275);
     background-image: none; // ?
     padding: app-remy($gutter-md);
+
+    &.left {
+        left: 0;
+    }
+
+    &.right {
+        right: 0;
+    }
 }
 
 @include app-mq-breakpoint-up(md) { 

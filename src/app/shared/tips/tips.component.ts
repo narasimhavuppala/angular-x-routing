@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-tips',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TipsComponent {
 
+    @Input() position = 'left';
     isVisible = false;
 
     toggleVisible() {

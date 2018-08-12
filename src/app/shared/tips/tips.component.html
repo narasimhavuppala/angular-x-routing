@@ -1,6 +1,6 @@
 <div class="app-tooltip-container">
-    <div class="alert alert-info" role="alert" *ngIf="isVisible">
-        <span class="fa fa-2x fa-caret-down app-alert-caret"></span>
+    <div class="alert alert-info" role="alert" *ngIf="isVisible" [ngClass]="position">
+        <span class="fa fa-2x fa-caret-down app-alert-caret" [ngClass]="position"></span>
         <div>
             possimus praesentium culpa at exercitationem veniam dolores ullam error tenetur provident? Quis, ex! Lorem ipsum dolor sit
             amet consectetur adipisicing elit. Saepe optio doloribus nihil repudiandae sapiente dolorum odio tempore,
@@ -9,7 +9,7 @@
     
     <button role="button" class="btn btn-link app-btn-vanilla-link" (click)="toggleVisible()">
         <span class="fas fa-lightbulb"></span>
-        <span>Tips</span>
+        <strong>Tips</strong>
     </button>
 </div>
 
