@@ -1,11 +1,52 @@
-@import 'app-settings';
+@import 'app-component-dependencies';
+
+.app-tooltip-container { 
+    display: inline;
+}
+
+@include app-mq-breakpoint-up(xl) { 
+    .app-tooltip-container {
+        position: relative;
+    }
+}
 
 .fa-lightbulb {
-    margin-right: $gutter-xs;
+    margin-right: app-remy($gutter-xs);
 }
 
 .app-btn-vanilla-link {
-    &:hover {
-        text-decoration: none;
+    text-decoration: none !important;
+}
+
+.app-alert-caret {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    bottom: -(app-remy(20));
+    pointer-events: none;
+    color: #d1ecf1;
+}
+
+.alert {
+    position: absolute;
+    z-index: 1;
+    left: app-remy(15);
+    bottom: app-remy(8);
+    width: app-remy(275);
+    background-image: none;
+    padding: app-remy($gutter-md);
+}
+
+@include app-mq-breakpoint-up(md) { 
+    .alert {
+        width: app-remy(350);
     }
+}
+
+@include app-mq-breakpoint-up(xl) { 
+    .alert {
+        left: 50%;
+        margin-left: -(app-remy(175));
+    }   
 }
