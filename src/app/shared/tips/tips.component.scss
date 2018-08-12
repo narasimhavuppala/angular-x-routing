@@ -2,12 +2,7 @@
 
 .app-tooltip-container { 
     display: inline;
-}
-
-@include app-mq-breakpoint-up(xl) { 
-    .app-tooltip-container {
-        position: relative;
-    }
+    position: relative;
 }
 
 .fa-lightbulb {
@@ -20,21 +15,19 @@
 
 .app-alert-caret {
     position: absolute;
-    left: 0;
-    width: 100%;
-    text-align: center;
+    left: app-remy($gutter-sm);
     bottom: -(app-remy(20));
-    pointer-events: none;
+    pointer-events: none; // ?
     color: #d1ecf1;
 }
 
 .alert {
     position: absolute;
     z-index: 1;
-    left: app-remy(15);
+    left: 0;
     bottom: app-remy(8);
     width: app-remy(275);
-    background-image: none;
+    background-image: none; // ?
     padding: app-remy($gutter-md);
 }
 
@@ -42,11 +35,4 @@
     .alert {
         width: app-remy(350);
     }
-}
-
-@include app-mq-breakpoint-up(xl) { 
-    .alert {
-        left: 50%;
-        margin-left: -(app-remy(175));
-    }   
 }
