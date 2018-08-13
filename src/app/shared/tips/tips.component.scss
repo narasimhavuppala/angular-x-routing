@@ -7,7 +7,7 @@
 }
 
 .fa-lightbulb {
-    margin-right: app-remy($gutter-xs);
+    margin-right: app-remy($app-gutter-xs);
 }
 
 .app-btn-vanilla-link {
@@ -21,11 +21,11 @@
     color: #d1ecf1;
 
     &.left {
-        left: app-remy($gutter-sm);
+        left: app-remy($app-gutter-sm);
     }
 
     &.right {
-        right: app-remy($gutter-sm);
+        right: app-remy($app-gutter-sm);
     }
 }
 
@@ -35,7 +35,7 @@
     bottom: app-remy(8);
     width: app-remy(275);
     background-image: none; // ?
-    padding: app-remy($gutter-md);
+    padding: app-remy($app-gutter-md);
 
     &.left {
         left: 0;
