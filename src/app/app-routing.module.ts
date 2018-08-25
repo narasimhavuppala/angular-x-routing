@@ -16,6 +16,7 @@ const routes: Routes = [
     path: 'products',
     // path is relative to index.html
     loadChildren: 'app/product/product.module#ProductModule',
+    //canActivate: [AuthGuardService]
     canLoad: [AuthGuardService]
   },
   {

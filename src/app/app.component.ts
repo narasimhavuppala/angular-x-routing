@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
 
 import { UserModel } from 'app/user/user.model';
 import { AuthService } from 'app/core/auth.service';
@@ -33,12 +34,20 @@ export class AppComponent implements OnInit, OnDestroy {
     // });
 
     // Can we get to route parameters from this not routable component? No!
-    // "ActivatedRoute won't work on AppComponent"
+    // "ActivatedRoute won't work on AppComponent"                                                      <=======================
     // https://stackoverflow.com/questions/40012369/how-to-get-the-active-route-in-app-component
     // https://github.com/angular/angular/issues/11023
     // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe((p) => {
     //   console.log(p);
     // });
+
+    // But we can get the URL
+    // If routeGuard hinders navigation, the event will contain redirect route, and not the hindered route! If no redirect route, event will not fire.
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe(event => {
+        console.log(event);
+      });
 
     this.userSubscription = this.authService.user$.subscribe(user => this.user = user);
   }
