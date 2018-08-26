@@ -11,17 +11,14 @@ import { ProductGuardService } from 'app/core/product-guard.service';
 
 const routes: Routes = [
 
-  // VERSION 3
-  // Now we are lazy loading, so this route configuration is changed for the third time
 
   {
-    // The configuration starts with lazy in app-routing.module
-    // /products
+
     path: '',
     component: ProductListComponent
   },
   {
-    // /products/2
+
     path: ':id',
     component: ProductDetailComponent,
     resolve: {
@@ -29,7 +26,7 @@ const routes: Routes = [
     }
   },
   {
-    // User never lands on this path because of redirect bellow
+
     // But product-edit.component.html has a <router-outlet> that children bellow will have their templates displayed
     path: ':id/edit',
     component: ProductEditComponent,

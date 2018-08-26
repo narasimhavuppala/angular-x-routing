@@ -63,8 +63,8 @@
                                 console.log(this.activatedRoute.snapshot.queryParamMap.get('showImage'));
                                 this.activatedRoute.queryParamMap.subscribe
                             -->
-                            <a [routerLink]="['/products', product.id]" 
-                                [queryParams]="{ filterBy: listFilter, showImage: showImage }"> <!-- We define query parameters here in link to product-detail. In product-detail.component:s back link we preserve them -->
+                            <a [routerLink]="['/products', product.id]" [queryParams]="{ filterBy: listFilter, showImage: showImage }">
+                                <!-- We define query parameters here in link to product-detail. In product-detail.component:s back link we preserve them -->
                                 {{product.productName}} id: {{ product.id }}
                             </a>
                         </td>
@@ -76,7 +76,8 @@
                             </app-star>
                         </td>
                         <td>
-                            <a class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']"> <!-- No slash before edit -->
+                            <a class="btn btn-primary" [routerLink]="['/products', product.id, 'edit']">
+                                <!-- No slash before edit -->
                                 Edit
                             </a>
                         </td>
