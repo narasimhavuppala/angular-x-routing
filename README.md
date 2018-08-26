@@ -2,13 +2,19 @@
 This app is about routing and architecture, not design
 
 ### Course Agenda
+* Routing overview
+  - How HTML nav tag works
+  - How anchro tag works
+  - How Browser History works
 * Routing basics
   - Router outlet
   - router Link
-* Routing to features
 * Route parameters
+  - How to send Data through routes
 * Prefetching data using Route Resolvers
+ - Resolve
 * Child Routes
+  - Children va loadChildren
 * Grouping and Component-less Routes
 * Styling, Animating and Watching Routes
 * Secondary (Auxiliary) Routes

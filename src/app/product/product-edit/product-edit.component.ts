@@ -37,16 +37,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('INIT');
-
-    // We need to subscribe to params here (instead of using snapshot), so new data is fetched if user clicks create product from the top menu (a new id with value 0 is sent with the route, AND this component is NOT recreated)
-    // this.routeParamSubscription = this.activatedRoute.params.subscribe(this.onGetProductId);
-
-    // use paramMap instead: https://stackoverflow.com/questions/47809357/angular-4-5-route-parammap-vs-params , https://angular.io/api/router/ParamMap , https://angular.io/guide/router#activated-route-in-action
-    // this.routeParamSubscription = this.activatedRoute.paramMap.subscribe(this.onGetProductId);
-
-    // We no longer get the id and fetch the product via productService since we are using a resolver instead
-
-    // subscribing to resolve
     // for just getting it via snapshot.data without subscription, see product-detail.component
     this.activatedRouteSubscription = this.activatedRoute.data.subscribe((data) => {
       this.product = data['product'];
@@ -56,8 +46,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // this.routeParamSubscription.unsubscribe();
-    // this.productSubscription.unsubscribe();
 
     this.activatedRouteSubscription.unsubscribe();
 
@@ -104,7 +92,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   isValid(path?: string) {
-    if(!this.product) {
+    if (!this.product) {
       return false;
     }
 
@@ -113,7 +101,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     if (path) {
       return this.dataIsValid[path];
     }
-    
+
     return (this.dataIsValid && Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
   }
 
