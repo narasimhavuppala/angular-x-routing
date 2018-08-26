@@ -14,8 +14,11 @@ This app is about routing and architecture, not design
   - Default route
   - Wildcard route
   - Redirect route
+  - RouterModule.forRoot
+  - RouterModule.forChild
 * Route parameters
   - How to send Data through routes
+  - path/:id example  path/2
 * Prefetching data using Route Resolvers
  - Resolve
 * Child Routes
@@ -24,7 +27,10 @@ This app is about routing and architecture, not design
 * Styling, Animating and Watching Routes
 * Secondary (Auxiliary) Routes
 * Route Guards
+  - canActivate : Entry for component
+  - canDeactivate : Entry for Component
 * Lazy Loading
+ -   loadChildren
 
 See app.component for notes, for example on optional routes parameters
 
