@@ -11,10 +11,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    // LAZY LOADING
-    // -- This object is here in sync with version 3 of route configuration in product-routing.module
     path: 'products',
-    // path is relative to index.html
     loadChildren: 'app/product/product.module#ProductModule',
     //canActivate: [AuthGuardService]
     canLoad: [AuthGuardService]
@@ -30,15 +27,12 @@ const routes: Routes = [
   }
 ];
 
-// HTML5 style navigation vs hash { useHash: true } as second argument to .forRoot()
-// https://angular.io/guide/router#set-the-base-href
-// https://angular.io/guide/router#appendix-locationstrategy-and-browser-url-styles
-// https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml
+
 
 @NgModule({
   imports: [
-    // .forRoot() should only be used 1 time in the application , here we use enableTracing for debug info (could use environment debug, so just use in debug mode(?))
-    RouterModule.forRoot(routes, { useHash: true })  // send in { enableTracing: true } as second argument
+
+    RouterModule.forRoot(routes, { useHash: true, enableTracing: true })  // send in { enableTracing: true } as second argument
     // send in { preloadingStrategy: PreloadAllModules | } import types from '@angular/router'
   ],
   exports: [

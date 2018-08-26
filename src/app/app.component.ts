@@ -15,7 +15,7 @@ import { MessageService } from 'app/core/message.service';
 export class AppComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   user: UserModel = null;
-  pageTitle = 'Acme Product Management';
+  pageTitle = 'Product Management';
 
   constructor(
     private router: Router,

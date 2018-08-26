@@ -1,13 +1,10 @@
-# Following Course
-https://app.pluralsight.com/library/courses/angular-routing/table-of-contents  
-https://github.com/DeborahK/Angular-Routing
-
-## Info
 
 This app is about routing and architecture, not design
 
 ### Course Agenda
 * Routing basics
+  - Router outlet
+  - router Link
 * Routing to features
 * Route parameters
 * Prefetching data using Route Resolvers

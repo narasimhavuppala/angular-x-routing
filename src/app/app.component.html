@@ -6,8 +6,6 @@
       <a class="navbar-brand">{{pageTitle}}</a>
       <ul class="nav navbar-nav">
         <li>
-          <!-- A link parameters array, here we could have used the shorthand syntax <a routerLink="/welcome" -->
-          <!-- routerLinkActive also works on ancestor elements -->
           <a [routerLink]="['/welcome']" routerLinkActive="active">Home</a>
         </li>
         <li>
@@ -28,8 +26,12 @@
         </li>
         <li>
           <!-- <a [routerLink]="[{ outlets: { popup: ['messages'] } }]">Show Messages</a> -->
-          <button class="btn btn-link app-btn-vanilla-link" (click)="displayMessages()" *ngIf="!messageService.isDisplayed">Show Messages</button>
-          <button class="btn btn-link app-btn-vanilla-link" (click)="hideMessages()" *ngIf="messageService.isDisplayed">Hide Messages</button>
+          <button class="btn btn-link app-btn-vanilla-link" (click)="displayMessages()" *ngIf="!messageService.isDisplayed">Show
+            Messages
+          </button>
+          <button class="btn btn-link app-btn-vanilla-link" (click)="hideMessages()" *ngIf="messageService.isDisplayed">Hide
+            Messages
+          </button>
         </li>
         <li *ngIf="!user">
           <a [routerLink]="['/login']">Log In</a>
