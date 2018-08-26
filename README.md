@@ -6,9 +6,14 @@ This app is about routing and architecture, not design
   - How HTML nav tag works
   - How anchro tag works
   - How Browser History works
-* Routing basics
-  - Router outlet
-  - router Link
+* Routing Directives
+  - RouterLink
+  - RouterLinkActive
+  - RouterOutlet
+* Route Configuration
+  - Default route
+  - Wildcard route
+  - Redirect route
 * Route parameters
   - How to send Data through routes
 * Prefetching data using Route Resolvers
